@@ -2,12 +2,16 @@ from django.db import models
 from tipoCertificado.models import TipoCertificado
 from empresa.models import Empresa
 from municipio.models import Municipio
+
+from sycer.functions import functions
+
 # Create your models here.
 class Certificado(models.Model):
 	#id_empresa_cliente=models.ForeignKey(EmpresaCliente, verbose_name='Cliente')
 	nombre = models.CharField(max_length=50)
 	descripcion = models.TextField(max_length=100, null=True, blank=True)
-	ruta = models.FileField(upload_to='soporte/')
+	#ruta = models.FileField(upload_to='soporte/')
+	ruta = models.FileField(upload_to = functions.path_and_rename('soporte/','cer'))
 	observacion = models.TextField(max_length=100, null=True, blank=True)
 	tipo=models.ForeignKey(TipoCertificado, verbose_name='Tipo de certificado')
 	pesoArchivo = models.PositiveIntegerField(default=0, verbose_name='Peso del archivo')

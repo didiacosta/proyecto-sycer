@@ -139,7 +139,19 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
-MEDIA_URL = '/media/'
+#MEDIA_URL = '/media/'
 
 LOGIN_URL = '/usuario/login/'
 LOGOUT_URL = '/usuario/logout/'
+
+#Configuracion de AWS
+
+
+AWS_STORAGE_BUCKET_NAME = 'sycer'
+AWS_ACCESS_KEY_ID = 'AKIAJJTRZP7GG53F3SJA'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
