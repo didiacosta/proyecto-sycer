@@ -1,0 +1,17 @@
+{% extends 'certificado/base_certificado.html' %}
+{% block title %}{{ titulo }}{% endblock title %}
+{% block content %}
+	<h2 class="page-header">{{ titulo }} </h2>
+	<div class="span10">
+		<form id="editarCertificado" class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<div class="form-actions">
+				<button class="btn btn-primary" type="submit" >{{nombre_btn}}</button>
+			</div>	
+			
+		</form>
+		<a href="/certificado/certificados"><i class="fa fa-arrow-circle-left fa-2x"></i> Volver a listado de certificados</a>
+	</div>
+	<!-- {{ user.usuario.id_empresa.nombre}} -->
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends 'empresaCliente/base_empresaCliente.html' %}
+{% block title %}Mis Clientes{% endblock title %}
+{% block content %}
+	<h2 class="page-header">Editar datos de mi cliente:</h2>
+	<div class="span10">
+		<form id="editarCliente" class="form-horizontal">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label" for="nombre">Nit:</label>
+					<div class="controls">
+						<input type="text" class="span6" id="nit" value="{{ object.nit}}"></input>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="nombre">Nombre:</label>
+					<div class="controls">
+						<input type="text" class="span6" id="nombre" value="{{ object.nombre}}"></input>
+					</div>
+				</div>
+                <div class="control-group">											
+					<label class="control-label">Activo:</label>
+					<div class="controls">
+                    	<label class="checkbox inline">
+                    		{% if object.estado == 1 %}
+                    			<input type="checkbox" id="estado" name="estado" checked="checked">
+                    		{% else %}
+                    			<input type="checkbox" id="estado" name="estado">
+                    		{% endif %}
+                    	</label>
+                    </div>	<!-- /controls -->			
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button class="btn btn-primary" type="submit" id="btnActualizar">Actualizar</button>
+				
+			</div>
+			<a href="/empresaCliente/clientes"><i class="fa fa-arrow-circle-left fa-2x"></i> Volver a listado de clientes</a>
+		</form>
+	
+	</div>
+	<!-- {{ user.usuario.id_empresa.nombre}} -->
+{% endblock content %}

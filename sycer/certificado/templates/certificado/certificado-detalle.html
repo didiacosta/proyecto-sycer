@@ -1,0 +1,59 @@
+{% extends 'certificado/base_certificado.html' %}
+{% block title %}Detalle del Certificado{% endblock title %}
+{% block content %}
+
+	<h2 class="page-header">Cliente: {{ object.id_empresa_cliente.id_cliente }} <br/> Certificado No.: {{ object.numero }} , {{object.fecha}} </h2>
+	<div class="span10">
+
+		<div class="control-group">
+			<label class="control-label" for="nombre">Nombre del certificado:</label>
+				<div class="controls">
+					<p>
+						{{object.nombre}}
+					</p>
+					</input>
+				</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="descripcion">Descripcion:</label>
+				<div class="controls">
+				<p>{{ object.descripcion}}</p>
+				</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="archivo">Soporte:</label>
+				<div class="controls">
+					<a href="{{ object.ruta.url}}" target="_blank">
+						<i class="fa fa-paperclip fa-4x"></i>
+					</a>
+					</input>
+				</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="descripcion">Observacion:</label>
+				<div class="controls">
+				<p>{{ object.observacion}}</p>
+				</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="descripcion">Tipo de certificado:</label>
+				<div class="controls">
+				<p>{{ object.tipo}}</p>
+				</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="descripcion">Municipio:</label>
+				<div class="controls">
+				<p>{{ object.municipio}}</p>
+				</div>
+		</div>		
+
+		<a href="/certificado/certificados"><i class="fa fa-arrow-circle-left fa-2x"></i> Volver a listado de certificados</a>
+	</div>
+	<!-- {{ user.usuario.id_empresa.nombre}} -->
+{% endblock content %}

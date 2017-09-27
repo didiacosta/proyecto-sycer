@@ -1,0 +1,58 @@
+{% extends 'empresa/base_empresa.html' %}
+{% block title %}Detalle{% endblock title %}
+{% block content %}
+	
+	<h2 class="page-header">Nombre: {{ object.nombre }}</h2>
+	<div class="span10">
+		<div class="col-span5">
+		<div class="control-group">
+				<div class="controls">
+					<p>
+						<img src="{{ object.logo.url }}" alt="Imagen de {{ object.nombre }}" width="30%" height="30%" />
+					</p>
+					</input>
+				</div>
+		</div>
+		</div>
+		<div class="col-span6">
+		<div class="control-group">
+			<b><label class="control-label" for="nombre">Nit:</label></b>
+				<div class="controls">
+					<p>
+						{{object.nit}}
+					</p>
+					</input>
+				</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="descripcion">Estado:</label>
+				<div class="controls">
+				<p>{{ object.estado}}</p>
+				</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="archivo">Resolución:</label>
+				<div class="controls">
+					<p>{{ object.resolucion}}</p>
+				</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="descripcion">Dirección:</label>
+				<div class="controls">
+				<p>{{ object.direccion}}</p>
+				</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="descripcion">Telefono:</label>
+				<div class="controls">
+				<p>{{ object.telefono}}</p>
+				</div>
+		</div>
+		</div>
+	</div>
+	<!-- {{ user.usuario.id_empresa.nombre}} -->
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends 'usuario/base_usuario.html' %}
+{% block title %}Editar email{% endblock title %}
+{% block content %}
+    <h2 class="page-header">Editar Contraseña:</h2>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Actualizar Contraseña</button>
+        <a href="{% url 'usuario.perfil' %}" class="btn btn-warning" type="submit">Cancelar</a>
+    </form>
+{% endblock content %}

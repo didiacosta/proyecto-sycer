@@ -1,0 +1,113 @@
+{% extends 'dictamen/base_dictamen.html' %}
+{% block title %}Detalle del dictamen{% endblock title %}
+{% block content %}
+	<div align="rigth">
+	<a href="{% url 'dictamen.dictamen-list'%}">
+		<i class="fa fa-arrow-circle-left fa-2x"></i> Regresar
+	</a>
+	</div>
+	<h2 class="page-header">Datos del dictamen</h2>
+		<div class="span12">
+			<div class="span3">
+				<p style="font-size:110%">
+				<b>Cliente:</b> {{cliente}}<br/>
+				<b>Tipo de Dictamen:</b> {{tipo}}<br/>
+				<b>Número:</b> {{ dictamenNumero }}<br/>
+				<b>Estado:</b>
+						{% if estado %}
+							<font color="green"><i class="fa fa-check-circle-o"></i></font><br/>
+						{% else %}
+							<font color="red"><i class="fa fa-minus-circle"></i></font><br/>
+						{% endif %}
+				<b>Ubicación: </b> {{ ubicacion }}<br/>
+				<b>Director técnico:</b>{{ director }}<br/>
+				<b>Inspector:</b>{{ inspector }}<br/>
+
+
+				</p>
+			</div>
+			<div class="span3">
+				<p style="font-size:110%">
+					<b>Responsable Construcción:</b>{{ constructor }}<br/>
+					<b>Matrícula responsable construcción:</b>{{ matConstructor }}<br/>
+					<b>Responsable diseño:</b>{{ responsableDiseno }}<br/>
+					<b>Matricula responsable diseño:</b>{{matResponsableDiseno}}<br/>
+					<b>Responsable interventoría:</b>{{resInterventoria}}<br/>
+					<b>Matricula responsable interventoría:</b>{{matResInterventoria}}
+				</p>
+			</div>
+			<div class="span3">
+				<a href="" title="Información técnica">
+					<div>
+					<i class="fa fa-info-circle fa-3x"></i>
+					Información técnica
+					</div>
+				</a>
+				<p style="font-color:red">Información técnica pendiente</p>
+				<p style="font-color:green">Información técnica registrada</p>
+			</div>			
+
+		</div>
+		
+	<h2 class="page-header">Evaluación</h2>
+	{%if object_list %}
+		<form id="frmEvaluacion" name="frmEvaluacion" action="../../guardarEvaluacion">
+			<div align="left"><button type="submit" class="btn-success"><i class="fa fa-save fa-2x"></i> Guardar Evaluación</button></div>
+			
+			<table class="table table-striped table-bordered responsive">
+				<thead>
+					<tr>
+						<th>requisito esencial</th>
+						<th>aspecto a evaluar</th>
+						<th colspan="3" align="center"> Respuesta</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					{% for evaluacionDictamen in object_list %}
+						<tr>
+							<td>{{evaluacionDictamen.aspectoEvaluado.requisitoEsencial.nombre}}</td>
+							<td>{{evaluacionDictamen.aspectoEvaluado.nombre}}</td>
+							<td>
+								{% if evaluacionDictamen.respuesta == "1" %}
+									<input type="radio" name="{{ evaluacionDictamen.id}}"
+									 value="1" checked="checked">No aplica
+								{% else %}
+									<input type="radio" name="{{ evaluacionDictamen.id}}"
+									 value="1" >No aplica
+
+								{% endif %}
+							</td>
+							<td>
+								{% if evaluacionDictamen.respuesta == "2" %}
+									<input type="radio" name="{{ evaluacionDictamen.id}}"
+									 value="2" checked="checked">Cumple
+								{%else%}
+									<input type="radio" name="{{ evaluacionDictamen.id}}"
+									 value="2">Cumple
+								{%endif%}	 
+							</td>
+							<td>
+								{% if evaluacionDictamen.respuesta == "3" %}
+									<input type="radio" name="{{ evaluacionDictamen.id}}"
+									 value="3" checked="checked">No cumple
+								{%else%}
+									<input type="radio" name="{{ evaluacionDictamen.id}}"
+									 value="3" >No cumple									
+								{%endif%}
+							</td>
+						</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+
+		</form>
+	{% else %}
+		<div class="span12">
+		    <div class="alert alert-info">
+        		<i class="fa fa-warning fa-2x"></i> No se ha iniciado el registro de evaluacion. ¿Desea registrarlo ahora?
+        		<button class="btn-primary">Si </button>
+        		<button class="btn-danger">No </button>
+            </div>	
+	{% endif %}
+{% endblock content%}

@@ -1,0 +1,24 @@
+{% extends 'page.html' %}
+{% block widgetHeader %}
+	<div class="span8">
+		<i class="fa fa-group fa-2x"></i><h3>Mis inspectores</h3>
+	</div>
+	<div class="span3" >
+	<!-- <div class="controls"> -->
+        <div class="btn-group">
+	        <a class="btn btn"><i class="fa fa-cogs"></i> Opciones</a>
+	        <a class="btn btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+	          <li><a href="{% url 'empresaInspector.crearEmpresaInspector' %}"><i class="fa fa-plus-circle"></i> Agregar Inspector</a></li>
+	          <li><a href="#"><i class="fa fa-file-excel-o"></i> Exportar a .xls</a></li>
+	          <li><a href="{% url 'empresaCliente.empresaCLiente-reporte' %}"><i class="fa fa-file-pdf-o"></i> Exportar a .pdf</a></li>
+	          <!-- <li class="divider"></li>
+	          <li><a href="#"><i class="i"></i> Make admin</a></li> -->
+	        </ul>
+    	</div>
+   <!--  </div> -->
+   </div>
+{% endblock widgetHeader %}
+{% block content %}
+  
+{% endblock content %}

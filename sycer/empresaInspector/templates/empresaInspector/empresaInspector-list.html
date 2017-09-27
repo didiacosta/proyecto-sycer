@@ -1,0 +1,74 @@
+{% extends 'empresaInspector/base_empresaInspector.html' %}
+{% block title %}Mis Inspectores{% endblock title %}
+{% block content %}
+	<h2 class="page-header">Mis inspectores: </h2>
+	<div class="span10">
+		
+	{% if object_list %}
+		<table class="table table-striped table-bordered">
+			<thead>
+	            <tr>
+	        	    <th width="30%"> Nombres </th>
+	        	    <th width="30%"> Apellidos</th>
+	        	    <th width="20%"> Matricula Profesional</th>
+	        	    <th width="10%"> Activo</th>
+	        	    <th width="20%" class="td-actions"> </th>
+	          	</tr>
+	        </thead>
+	        <tbody>
+			{% for empresaInspector in object_list %}
+				<tr>
+					<td>{{ empresaInspector.inspector.nombres }}</td>
+					<td>{{ empresaInspector.inspector.apellidos }}</td>
+					<td>{{ empresaInspector.inspector.matricula_profesional }}</td>
+					<td>
+						{% if empresaInspector.inspector.activo %}
+							<font color="green"><i class="fa fa-check-circle-o fa-2x"></i></font>
+						{% else %}
+							<font color="red"><i class="fa fa-minus-circle fa-2x"></i></font>
+						{% endif %}
+					</td>
+					<td>
+						<a href="../editarInspector/{{ empresaInspector.inspector.id}}">
+							<i class="fa fa-pencil fa-2x"></i>
+						</a>
+						<a href="../borrarInspector/{{ empresaInspector.id}}">
+							<i class="fa fa-trash-o fa-2x"></i>
+						</a>
+
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+		<!--Paginacion de los registros-->
+		{% if is_paginated %}
+		<ul class="pagination">
+
+		        {% if page_obj.has_previous %}
+		            <li><a href="?page={{ page_obj.previous_page_number }}">anterior</a></li>
+		        {% endif %}
+			    {% for num in page_obj.paginator.page_range %}
+  					{% ifequal num page_obj.number %}
+    					<li><a href="#" class="active">{{ num }}</a></li>
+  					{% else %}
+    					<li><a href="?page={{ num }}"> {{ num }}</a></li>
+  					{% endifequal %} 
+				{% endfor %}
+		    
+		        {% if page_obj.has_next %}
+		            <li><a href="?page={{ page_obj.next_page_number }}">siguiente</a></li>
+		        {% endif %}
+		</ul>
+		{% endif %}
+	{% else %}
+		<div class="span12">
+		    <div class="alert alert-info">
+        		<i class="fa fa-warning fa-2x"></i> No se encontraron datos para mostrar.
+            </div>	
+	{% endif %}
+	</div><!--Cierra el div de la tabla o el div del mensaje de ausencia de datos, dependiendo de por donde entre-->
+
+	
+	<!-- {{ user.usuario.id_empresa.nombre}} -->
+{% endblock content %}
