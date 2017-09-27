@@ -5,7 +5,7 @@ from .models import Certificado
 class CertificadoForm(forms.ModelForm):
 	class Meta:
 		model = Certificado
-		fields =('id_empresa_cliente','nombre','descripcion','ruta','observacion',
+		fields =('expide','nombre','descripcion','ruta','observacion',
 			'tipo','pesoArchivo','fecha','numero','codigoSeguridad','municipio')
 		labels = {
 			'body':'Texto'

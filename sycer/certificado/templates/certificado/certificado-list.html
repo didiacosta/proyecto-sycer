@@ -9,10 +9,10 @@
 			<thead>
 	            <tr>
 	            	<th width="5%"> Soporte</th>
-	        	    <th width="20%"> Cliente </th>
+	        	   <!--  <th width="20%"> Cliente </th> -->
 	        	    <th width="10%"> No. certificado </th>
 	        	    <th width="25%"> Tipo</th>
-	        	    <th width="30%"> Nombre</th>
+	        	    <th width="50%"> Nombre</th>
 	        	    <th width="15%" class="td-actions"> </th>
 	          	</tr>
 	        </thead>
@@ -20,7 +20,7 @@
 			{% for certificado in object_list %}
 				<tr>
 					<td><a href="{{ certificado.ruta.url}}" target="_blank"><i class="fa fa-paperclip fa-2x"></i></a></td>
-					<td>{{ certificado.id_empresa_cliente.id_cliente.nombre }}</td>
+					<!-- <td>{{ certificado.id_empresa_cliente.id_cliente.nombre }}</td> -->
 					<td>{{ certificado.numero }}</td>
 					<td>{{ certificado.tipo.nombre }}</td>
 					<td>{{ certificado.nombre }}</td>

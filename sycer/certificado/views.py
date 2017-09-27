@@ -22,7 +22,7 @@ class CertificadoListView(ListView):
 			queryset = self.model.objects.filter(numero__contains=self.kwargs['numero'])
 		else:
 			usuario= Usuario.objects.get(user=self.request.user)
-			queryset = self.model.objects.filter(id_empresa_cliente__id_empresa=usuario.id_empresa)
+			queryset = self.model.objects.filter(expide=usuario.id_empresa)
 		return queryset
 
 class CertificadoCreateView(CreateView):

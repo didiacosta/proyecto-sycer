@@ -1,10 +1,10 @@
 from django.db import models
 from tipoCertificado.models import TipoCertificado
-from empresaCliente.models import EmpresaCliente
+from empresa.models import Empresa
 from municipio.models import Municipio
 # Create your models here.
 class Certificado(models.Model):
-	id_empresa_cliente=models.ForeignKey(EmpresaCliente, verbose_name='Cliente')
+	#id_empresa_cliente=models.ForeignKey(EmpresaCliente, verbose_name='Cliente')
 	nombre = models.CharField(max_length=50)
 	descripcion = models.TextField(max_length=100, null=True, blank=True)
 	ruta = models.FileField(upload_to='soporte/')
@@ -15,6 +15,7 @@ class Certificado(models.Model):
 	numero = models.CharField(max_length=50)
 	codigoSeguridad= models.CharField(max_length=50, verbose_name='Codigo de seguridad')
 	municipio = models.ForeignKey(Municipio)
+	expide = models.ForeignKey(Empresa)
 	# id_empresa_cliente=models.ForeignKey(EmpresaCliente)
 	# nombre = models.CharField(max_length=50)
 	# descripcion = models.CharField(max_length=100)
