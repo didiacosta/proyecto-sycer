@@ -4,7 +4,7 @@ from .models import Certificado
 from acciones import export_as_excel
 
 class AdminCertificado(admin.ModelAdmin):
-	list_display=('expide','nombre','tipo','pesoArchivo', 'archivo','numero')
+	list_display=('expide','nombre','tipo','pesoArchivo', 'archivo','numero','codigoSeguridad')
 	list_filter=('tipo','expide')
 	search_fields=('nombre','descripcion')
 	actions = (export_as_excel, )

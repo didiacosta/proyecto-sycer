@@ -18,10 +18,11 @@ class CertificadoListView(ListView):
 	paginate_by = 10
 
 	def get_queryset(self):
-		if self.kwargs.get('numero'):
-			queryset = self.model.objects.filter(numero__contains=self.kwargs['numero'])
+		usuario= Usuario.objects.get(user=self.request.user)
+		if self.request.GET.get('numero'):
+			queryset = self.model.objects.filter(numero__contains=self.request.GET.get('numero'),
+				expide=usuario.id_empresa)
 		else:
-			usuario= Usuario.objects.get(user=self.request.user)
 			queryset = self.model.objects.filter(expide=usuario.id_empresa)
 		return queryset
 
