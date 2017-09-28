@@ -56,36 +56,32 @@
 			{% endfor %}
 			</tbody>
 		</table>
+
 <ul class="pagination">
   <li>
     {% if page_obj.has_previous %}
+      <a href="?page=1">
+        |<<
+      </a>
       <a href="?page={{ page_obj.previous_page_number }}">
-        Previo
+        <<
       </a>
     {% else %}
       
     {% endif %}
   </li>
 
-  {% for page_number in paginator.page_range %}
-    {% if page_number = page_obj.number %}
-      <li class="active">
-        <a href="#">{{ page_number }}</a>
-      </li>
-    {% else %}
-      <li>
-        <a href="?page={{ page_number }}">
-          {{ page_number }}
-        </a>
-      </li>
-    {% endif %}
-  {% endfor %}
+            {% for i in pages %}
+            <li {% if page_obj.number == i %} class="active" {% endif %}><a href="/certificado/certificados/?page={{i}}">{{i}}</a></li>
+            {% endfor %}
   <li>
     {% if page_obj.has_next %}
       <a href="?page={{ page_obj.next_page_number }}">
-        Siguiente
+        >>
       </a>
-    {% else %}
+      <a href="?page={{ page_obj.paginator.num_pages }}">
+        >>|
+      </a>
       
     {% endif %}
   </li>

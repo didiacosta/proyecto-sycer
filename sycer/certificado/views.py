@@ -26,6 +26,26 @@ class CertificadoListView(ListView):
 			queryset = self.model.objects.filter(expide=usuario.id_empresa)
 		return queryset
 
+	def get_context_data(self, **kwargs):
+		context = super(CertificadoListView, self).get_context_data(**kwargs)
+		if not context.get('is_paginated', False):
+			return context
+
+		paginator = context.get('paginator')
+		num_pages = paginator.num_pages
+		current_page = context.get('page_obj')
+		page_no = current_page.number
+
+		if num_pages <= 17 or page_no <= 9:  # case 1 and 2
+		    pages = [x for x in range(1, min(num_pages + 1, 18))]
+		elif page_no > num_pages - 9:  # case 4
+			pages = [x for x in range(num_pages - 16, num_pages + 1)]
+		else:  # case 3
+			pages = [x for x in range(page_no - 7, page_no + 8)]
+
+		context.update({'pages': pages})
+		return context
+
 class CertificadoCreateView(CreateView):
 	model = Certificado
 	template_name='certificado/certificado-form.html'
