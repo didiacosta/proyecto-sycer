@@ -108,7 +108,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'sycer',                      
         'USER': 'root',                      
-        'PASSWORD': 'santi10',         
+        #'PASSWORD': 'santi10', # en desarrollo
+        'PASSWORD': 'dacosta102014', # en la vm           
         'HOST': '127.0.0.1',                 
         'PORT': '3607',                      
     },
